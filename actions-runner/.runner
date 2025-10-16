@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 2,
+  "agentName": "GASTON",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus2.actions.githubusercontent.com/mXQWuGZU26fKwuaJqsGZtCcyYV3XVNaZnBZUz9UdOjBIoR9O4L/",
+  "gitHubUrl": "https://github.com/grodriguezlogicsat/whatsapplink",
+  "workFolder": "./run.cmd",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}
