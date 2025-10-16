@@ -1,0 +1,7 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center; // opcional si querés centrar también verticalmente
+  min-height: 100vh;   // opcional si querés ocupar toda la altura
+  width: 100%;
+}
