@@ -63,6 +63,10 @@ El número y el mensaje **no se exponen directamente** en el enlace compartido.
    - Copia o abre el enlace generado.
    - Al abrirlo en otra pestaña o dispositivo, redirige automáticamente a WhatsApp con tu mensaje.
 
+5. **Publicar en Page:**
+   - ng build --configuration production --base-href /whatsapplink/
+   - npx angular-cli-ghpages --dir=dist/whatsapplink
+
 ---
 
 ## 🔐 Seguridad y limitaciones
@@ -122,5 +126,5 @@ MIT © 2025 — Desarrollado con ❤️ y TypeScript.
 
 ---
 
-> **Autor:** Tu nombre o alias  
+> **Autor:** Gastón Rodríguez  
 > **Proyecto:** Generador de Enlaces de WhatsApp Cifrados — Angular
