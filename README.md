@@ -1,59 +1,126 @@
-# Whatsapplink
+# 🚀 Generador de Enlaces de WhatsApp (Cifrado + Emojis) — Angular ⚡️
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.18.
+Un proyecto **Angular moderno y standalone** que te permite generar **enlaces de WhatsApp cifrados**, evitando que el número de teléfono y el mensaje sean visibles a simple vista. Incluye además un **selector de emojis**, interfaz atractiva y un flujo completo de **encriptado → compartido → desencriptado → redirección a WhatsApp**.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🧠 ¿Cómo funciona?
+1. Ingresas tu **número de teléfono (formato internacional)** y el **mensaje**.
+2. La app cifra ambos valores usando **AES-GCM de 256 bits** (nativo del navegador).
+3. Se genera un enlace cifrado, por ejemplo:
+   ```text
+   https://tuapp.com/#/open?c=Af4x...&iv=Q2...&k=O_...
+   ```
+4. Cuando alguien abre ese enlace, la app desencripta la información en el navegador y redirige a:
+   ```text
+   https://wa.me/59891234567?text=Hola%20😀
+   ```
 
-```bash
-ng serve
+El número y el mensaje **no se exponen directamente** en el enlace compartido.
+
+---
+
+## ✨ Características principales
+✅ Interfaz moderna y responsive (basada en el estilo original de WhatsApp).  
+✅ Selector de emojis con búsqueda 🔍.  
+✅ Validación del número en formato **E.164** (6–15 dígitos).  
+✅ Generación de enlaces cifrados AES-GCM (256 bits).  
+✅ Redirección automática al abrir el enlace.  
+✅ Compatible con **hosting estático** (usa hash routing).  
+✅ 100 % **TypeScript y Angular standalone**.
+
+---
+
+## 🧩 Tecnologías
+- **Angular 18+** (standalone components)
+- **TypeScript 5+**
+- **Web Crypto API (AES-GCM)**
+- **Routing por hash (#/open)** para compatibilidad total con GitHub Pages, Netlify, etc.
+
+---
+
+## 🛠️ Instalación y uso
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/tuusuario/wa-enlace-cifrado.git
+   cd wa-enlace-cifrado
+   ```
+
+2. **Instalar dependencias:**
+   ```bash
+   npm install
+   ```
+
+3. **Ejecutar el proyecto:**
+   ```bash
+   ng serve -o
+   ```
+
+4. **Usar la aplicación:**
+   - Ingresa el número y mensaje.
+   - Presiona **“Generar enlace cifrado”**.
+   - Copia o abre el enlace generado.
+   - Al abrirlo en otra pestaña o dispositivo, redirige automáticamente a WhatsApp con tu mensaje.
+
+---
+
+## 🔐 Seguridad y limitaciones
+- La clave de cifrado se incluye dentro del enlace para que el descifrado sea posible **sin backend**.  
+  ⚠️ Esto significa que **quien posea el enlace completo puede verlo descifrado**.  
+  Sin embargo, evita exposición directa del número o texto a simple vista o en analytics.
+- Si deseas confidencialidad real, implementa un **servidor intermedio** que guarde las claves temporalmente o use tokens efímeros.
+
+---
+
+## 📂 Estructura principal
+```
+src/
+├── app/
+│   ├── app.component.ts       # Raíz del proyecto
+│   ├── app.routes.ts          # Rutas principales
+│   ├── crypto.service.ts      # Cifrado/descifrado AES-GCM
+│   ├── generator.component.*  # Formulario principal + emojis + cifrado
+│   └── open.component.ts      # Desencripta y redirige a WhatsApp
+├── index.html
+├── main.ts
+└── styles.css
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 💬 Ejemplo visual
+🔹 Pantalla principal con selector de emojis:  
+![Pantalla principal](docs/demo-main.png)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+🔹 Vista de redirección cifrada:  
+![Redirección](docs/demo-open.png)
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🌐 Despliegue rápido
+Puedes publicarlo **sin backend** en:
+- GitHub Pages
+- Netlify
+- Cloudflare Pages
+- Vercel (SPA estática)
 
-```bash
-ng generate --help
-```
+Solo asegúrate de mantener el **hash routing** (`#/open`).
 
-## Building
+---
 
-To build the project run:
+## 🤝 Contribuciones
+¡Toda mejora es bienvenida! 🙌
+1. Haz un fork.
+2. Crea una rama: `git checkout -b feature/nueva-funcion`.
+3. Envía un PR.
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 🧾 Licencia
+MIT © 2025 — Desarrollado con ❤️ y TypeScript.
 
-## Running unit tests
+---
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+> **Autor:** Tu nombre o alias  
+> **Proyecto:** Generador de Enlaces de WhatsApp Cifrados — Angular
