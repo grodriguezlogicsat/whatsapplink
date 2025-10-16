@@ -1,0 +1,15 @@
+export default `<!doctype html>
+<html lang="es" data-beasties-container="">
+
+<head>
+    <meta charset="utf-8">
+    <title>WhatsApp Link (Cifrado)</title>
+    <base href="/whatsapplink/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>:root{--bg:#0b1020;--panel:#111731;--muted:#8da2b5;--text:#e6eef6;--accent:#22c55e;--danger:#ef4444;--ring:rgba(34, 197, 94, .35)}*{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial,"Apple Color Emoji","Segoe UI Emoji";background:radial-gradient(1200px 800px at 80% -10%,rgba(34,197,94,.08),transparent 60%),radial-gradient(1000px 700px at -10% 110%,rgba(59,130,246,.08),transparent 60%),var(--bg);color:var(--text)}</style><link rel="stylesheet" href="styles-XG47E724.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-XG47E724.css"></noscript></head>
+
+<body ngcm="">
+    <app-root></app-root>
+<script src="polyfills-B6TNHZQ6.js" type="module"></script><script src="main-FDHMSFJP.js" type="module"></script></body>
+
+</html>`;
