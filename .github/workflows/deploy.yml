@@ -1,0 +1,38 @@
+name: 🚀 Deploy Angular App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # permite ejecutarlo manualmente desde la pestaña Actions
+
+permissions:
+  contents: write # necesario para poder subir a gh-pages
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔍 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22 # versión LTS recomendada
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🏗️ Build Angular project
+        run: |
+          npm run build -- --configuration production --base-href /whatsapplink/
+
+      - name: 🚀 Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages            # rama destino
+          folder: dist/whatsapplink   # carpeta generada por el build
+          clean: true
+          token: ${{ secrets.GITHUB_TOKEN }}
