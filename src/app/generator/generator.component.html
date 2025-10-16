@@ -1,0 +1,59 @@
+<main class="card" role="main">
+    <h1>Generador de enlace de WhatsApp (con cifrado)</h1>
+    <p class="lead">Ingresa el <strong>número</strong> (formato internacional) y el <strong>mensaje</strong>.
+        Generaremos un <strong>enlace cifrado</strong> que no muestra el contenido y que redirige a WhatsApp al abrirlo.
+    </p>
+
+
+    <div class="grid">
+        <section>
+            <label for="phone">Número (formato internacional E.164)</label>
+            <div class="control"><span>🌍</span>
+                <input id="phone" name="phone" inputmode="tel" autocomplete="tel"
+                    placeholder="Ej: +59891234567 (Uruguay)" [(ngModel)]="phone" (input)="updatePreview()" />
+            </div>
+            <div [class]="statusClass">{{status}}</div>
+        </section>
+
+
+        <section class="emoji-wrap">
+            <label for="messageArea">Mensaje</label>
+            <div class="control">
+                <textarea id="messageArea" placeholder="Escribe tu mensaje aquí… (soporta emojis)" [(ngModel)]="message"
+                    (input)="updatePreview()"></textarea>
+            </div>
+            <div class="actions">
+                <button class="btn" type="button" (click)="emojiOpen.set(!emojiOpen())"
+                    [attr.aria-expanded]="emojiOpen()">😊 Insertar emoji</button>
+                <span class="hint">Tip: selector nativo <span class="kbd">Win</span>+<span class="kbd">.</span> o <span
+                        class="kbd">Ctrl/Cmd</span>+<span class="kbd">Space</span>.</span>
+            </div>
+            <div class="emoji-panel" [class.open]="emojiOpen()" role="dialog" aria-label="Selector de emojis">
+                <div class="search"><span>🔎</span><input placeholder="Buscar (sonrisa, corazón, fiesta…)"
+                        [(ngModel)]="emojiQuery" /></div>
+                <div class="emoji-grid">
+                    <button type="button" class="emoji-btn" *ngFor="let it of filteredEmojis()"
+                        (click)="insertEmoji(it.e)" [title]="it.k">{{it.e}}</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="row">
+        <div>
+            <div class="actions">
+                <button class="btn btn-primary" type="button" (click)="buildEncryptedLink()">Generar enlace
+                    cifrado</button>
+                <button class="btn" type="button" (click)="openWhatsApp()">Abrir (redirigir)</button>
+                <button class="btn" type="button" (click)="copyLink()">Copiar enlace</button>
+                <button class="btn btn-danger" type="button" (click)="clear()">Limpiar</button>
+            </div>
+            <div class="hint">El número debe incluir <strong>código de país</strong> y no debe contener espacios ni
+                símbolos al final (se limpiará automáticamente). El cifrado usa AES‑GCM con clave aleatoria incluida en
+                el propio enlace.</div>
+        </div>
+    </div>
+
+
+    <div class="output" aria-live="polite">{{preview}}</div>
+</main>

@@ -1,1 +1,250 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --bg: #0b1020;
+    --panel: #111731;
+    --muted: #8da2b5;
+    --text: #e6eef6;
+    --accent: #22c55e;
+    --danger: #ef4444;
+    --ring: rgba(34, 197, 94, 0.35);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    background: radial-gradient(1200px 800px at 80% -10%, rgba(34, 197, 94, .08), transparent 60%),
+        radial-gradient(1000px 700px at -10% 110%, rgba(59, 130, 246, .08), transparent 60%),
+        var(--bg);
+    color: var(--text);
+}
+
+.container {
+    min-height: 100%;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.card {
+    width: min(880px, 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 255, 255, .04);
+    border-radius: 18px;
+    padding: 22px;
+    backdrop-filter: blur(6px);
+}
+
+.lead {
+    color: var(--muted);
+}
+
+.grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin: 6px 0 8px;
+}
+
+.control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--panel);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 10px 12px;
+    transition: border-color .15s, box-shadow .15s;
+}
+
+.control:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--ring);
+}
+
+.control input,
+.control textarea {
+    background: transparent;
+    border: 0;
+    outline: none;
+    color: var(--text);
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.control textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.hint {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.btn {
+    appearance: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 10px 14px;
+    background: #121a36;
+    color: var(--text);
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform .04s ease, opacity .15s ease, background .15s;
+}
+
+.btn:hover {
+    opacity: .95;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-primary {
+    background: linear-gradient(180deg, #22c55e, #16a34a);
+    border-color: #16a34a;
+    color: #0a1b10;
+}
+
+.btn-danger {
+    background: linear-gradient(180deg, #ef4444, #dc2626);
+    border-color: #b91c1c;
+    color: #210707;
+}
+
+.row {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+    .row {
+        grid-template-columns: 1fr auto;
+        align-items: end;
+    }
+}
+
+.output {
+    margin-top: 18px;
+    padding: 12px;
+    border-radius: 12px;
+    background: #0e152e;
+    border: 1px dashed rgba(255, 255, 255, 0.12);
+    overflow-wrap: anywhere;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+.status {
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.status.ok {
+    color: #86efac;
+}
+
+.status.bad {
+    color: var(--danger);
+}
+
+.emoji-wrap {
+    position: relative;
+}
+
+.emoji-panel {
+    position: absolute;
+    inset-inline-end: 0;
+    top: calc(100% + 8px);
+    width: min(420px, 90vw);
+    max-height: 300px;
+    overflow: auto;
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 14px;
+    padding: 8px;
+    display: none;
+    z-index: 10;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .45);
+}
+
+.emoji-panel.open {
+    display: block;
+}
+
+.emoji-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 6px;
+}
+
+.emoji-btn {
+    font-size: 20px;
+    line-height: 1;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: transparent;
+    cursor: pointer;
+}
+
+.emoji-btn:hover {
+    background: rgba(255, 255, 255, .06);
+}
+
+.search {
+    display: flex;
+    gap: 6px;
+    margin: 4px 4px 8px;
+    align-items: center;
+    background: #0b122a;
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    padding: 6px 8px;
+}
+
+.search input {
+    color: var(--text);
+    background: transparent;
+    border: 0;
+    outline: 0;
+    width: 100%;
+}
+
+.kbd {
+    font: 12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    background: #0b122a;
+    padding: 2px 6px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, .12);
+}
